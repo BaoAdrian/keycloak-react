@@ -1,4 +1,22 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Keycloak-React Webapp
+Basic React web application developed to demo the usage of Keycloak for Client authentication.
+
+# Getting Started
+Spin up `Keycloak` docker container
+```
+$ docker run -p 8080:8080 -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin -e DB_VENDOR=H2 jboss/keycloak
+```
+   - NOTE: You can access the admin console by navigating to `http://localhost:8080/auth/admin` and entering the environemtn variables set by the `docker run` command
+
+Start server to host React frontend application
+```
+$ npm start
+```
+   - NOTE: You can access this webapp at `http://localhost:3000`
+
+At this point, you should be presented with two options, viewing the public page (current page) and viewing the secured page (requires authentication through Keycloak).
+   - If you have configured this web-app as a `Client` in the Keycloak admin console (with `Root URL: http://localhost:3000`), then you will be able to log in and view the secured page.
+
 
 ## Available Scripts
 
