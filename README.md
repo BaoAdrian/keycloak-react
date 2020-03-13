@@ -8,14 +8,32 @@ $ docker run -p 8080:8080 -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin -e D
 ```
    - NOTE: You can access the admin console by navigating to `http://localhost:8080/auth/admin` and entering the environemtn variables set by the `docker run` command
 
+Add settings for your application
+```
+realm: master
+clientId: keycloak-react
+root url: http://localhost:3000
+```
+
+Select `keycloak-react` Client and navigate to **Installation** and select `Keycloak OIDC JSON` that should look something like
+```
+{
+  "realm": "master",
+  "auth-server-url": "http://localhost:8080/auth/",
+  "ssl-required": "external",
+  "resource": "keycloak-react",
+  "public-client": true,
+  "confidential-port": 0
+}
+```
+
+Download the JSON file and place into `public/keycloak.json`
+
 Start server to host React frontend application
 ```
 $ npm start
 ```
    - NOTE: You can access this webapp at `http://localhost:3000`
-
-At this point, you should be presented with two options, viewing the public page (current page) and viewing the secured page (requires authentication through Keycloak).
-   - If you have configured this web-app as a `Client` in the Keycloak admin console (with `Root URL: http://localhost:3000`), then you will be able to log in and view the secured page.
 
 
 ## Available Scripts
